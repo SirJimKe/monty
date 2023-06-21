@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <string.h>
 
+#define MAX_LINE_LENGTH 1024
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -38,8 +40,22 @@ typedef struct instruction_s
 } instruction_t;
 
 
+/**
+ * struct data_s - lines and count
+ * @lines: an array of strings (lines of text)
+ * @count:  number of lines present in the lines array
+ *
+ * Description: stores the content of a file
+ */
+typedef struct data_s
+{
+	char **lines;
+	int count;
+} data_t;
 
-
+/** functions in data.c file*/
+void free_data_t(data_t content);
+data_t read_file(const char *filename);
 
 
 
