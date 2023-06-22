@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <ctype.h>
 
 #define MAX_LINE_LENGTH 1024
 
@@ -62,7 +63,7 @@ void find_instruction(char *opcode, stack_t **stack,
 void execute_instructions(data_t content);
 
 /** function in push_pall.c */
-void push(stack_t **stack, unsigned int line_number, char *argument);
-void pall(stack_t **stack, unsigned int line_number, char *argument);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 
 #endif
