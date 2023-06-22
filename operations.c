@@ -38,11 +38,11 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - divides the value of the top element by the second top element
+ * divi - divides the value of the top element by the second top element
  * @stack: stack
  * @line_number: line number
  */
-void div(stack_t **stack, unsigned int line_number)
+void divi(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
