@@ -22,8 +22,8 @@ int main(int argc, char *argv[])
 	 * Call functions to execute instructions
 	 */
 	content = read_file(filename);
-	free_data_t(content);
-
+	execute_instructions(content);
+	free_data(content);
 
 	return (EXIT_SUCCESS);
 }

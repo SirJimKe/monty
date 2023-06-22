@@ -67,7 +67,7 @@ data_t read_file(const char *filename)
  * free_data_t - frees memory allocated for data_t structure
  * @content: data_t content
  */
-void free_data_t(data_t content)
+void free_data(data_t content)
 {
 	int i;
 
