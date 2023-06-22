@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * execute_instructions - executes a sequence of instructions on a file
+ * execute_instructions - executes a sequence of instruction in file
  * @opcode: opcode
  * @line_number: line_number
  * @stack: stack
@@ -30,7 +30,8 @@ void execute_instructions(char *opcode, unsigned int line_number,
 
 	if (!valid_opcode)
 	{
-		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number,
+			opcode);
 		exit(EXIT_FAILURE);
 	}
 }

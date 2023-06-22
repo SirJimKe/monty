@@ -39,6 +39,8 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* Opcode functions */
+
 /** functions in process_file.c file */
 void free_stack(stack_t *stack);
 void process_file(const char *filename);
