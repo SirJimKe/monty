@@ -58,7 +58,6 @@ data_t read_file(const char *filename)
 		content.count++;
 	}
 
-	printf("FIle opened and read successfully!\n");
 	fclose(file);
 	return (content);
 }
