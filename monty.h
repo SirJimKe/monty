@@ -65,5 +65,6 @@ void execute_instructions(data_t content);
 /** function in push_pall.c */
 void push(stack_t **stack, unsigned int line_number, char *argument);
 void pall(stack_t **stack, unsigned int line_number, char *argument);
+void pint(stack_t **doubly, unsigned int pline);
 
 #endif

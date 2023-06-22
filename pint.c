@@ -1,7 +1,6 @@
 #include "monty.h"
 /**
  * pint - print the value at the top of the stack
- *
  * @doubly: head of the linked list
  * @pline: line number
  * Return: no return
