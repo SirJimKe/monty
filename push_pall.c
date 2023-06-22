@@ -4,12 +4,18 @@
  * push - adds a new node to the top of a stack
  * @stack: a double pounter to a stack_t structure
  * @line_number: unsigned integer
- * @argument: a character pointer
  */
-void push(stack_t **stack, unsigned int line_number, char *argument)
+void push(stack_t **stack, unsigned int line_number)
 {
-	int value = atoi(argument);
+	char *argument = strtok(NULL, " \t\n");
+	int value;
 	stack_t *new_node = malloc(sizeof(stack_t));
+
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 
 	if (argument == NULL)
 	{
@@ -17,9 +23,9 @@ void push(stack_t **stack, unsigned int line_number, char *argument)
 		exit(EXIT_FAILURE);
 	}
 
-	if (value == 0 && strcmp(argument, "0") != 0)
+	if (!isdigit(argument[0]) && argument[0] != '-' && argument[0] != '+')
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -29,12 +35,16 @@ void push(stack_t **stack, unsigned int line_number, char *argument)
 		exit(EXIT_FAILURE);
 	}
 
+	value = atoi(argument);
 	new_node->n = value;
 	new_node->prev = NULL;
-	new_node->next = *stack;
 
 	if (*stack != NULL)
+	{
+		new_node->next = *stack;
 		(*stack)->prev = new_node;
+	}
+	new_node->next = NULL;
 
 	*stack = new_node;
 }
@@ -44,14 +54,12 @@ void push(stack_t **stack, unsigned int line_number, char *argument)
  * pall - prints the values of all nodes in a stack
  * @stack: a double pounter to a stack_t structure
  * @line_number: unsigned integer
- * @argument: a character pointer
  */
-void pall(stack_t **stack, unsigned int line_number, char *argument)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
 
 	(void)line_number;
-	(void)argument;
 
 	while (current != NULL)
 	{
