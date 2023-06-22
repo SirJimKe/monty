@@ -10,12 +10,11 @@ void execute_instructions(char *opcode, unsigned int line_number,
 			  stack_t **stack)
 {
 	int valid_opcode = 0;
-	int i;
+	size_t i;
 
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
-		/* Add more opcodes here */
 		{NULL, NULL}};
 
 	for (i = 0; instructions[i].opcode != NULL; i++)
@@ -30,8 +29,8 @@ void execute_instructions(char *opcode, unsigned int line_number,
 
 	if (!valid_opcode)
 	{
-		fprintf(stderr, "L%u: unknown instruction %s\n", line_number,
-			opcode);
+		fprintf(stderr, "L%u: unknown instruction %s\n",
+			line_number, opcode);
 		exit(EXIT_FAILURE);
 	}
 }

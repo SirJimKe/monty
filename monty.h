@@ -50,7 +50,7 @@ void execute_instructions(char *opcode, unsigned int line_number,
 			  stack_t **stack);
 
 /** function in push_pall.c */
-void push(stack_t **stack, unsigned int line_number, char *argument);
-void pall(stack_t **stack, unsigned int line_number, char *argument);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
 
 #endif
