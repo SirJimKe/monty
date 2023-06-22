@@ -8,22 +8,13 @@
  */
 int main(int argc, char *argv[])
 {
-	const char *filename = argv[1];
-	data_t content;
-
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
-	/**
-	 * Call functions to read file content
-	 * Call functions to execute instructions
-	 */
-	content = read_file(filename);
-	execute_instructions(content);
-	free_data(content);
+	process_file(argv[1]);
 
 	return (EXIT_SUCCESS);
 }

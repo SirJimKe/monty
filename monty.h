@@ -7,7 +7,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define MAX_LINE_LENGTH 1024
+#define STACK_SIZE 1024
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -39,28 +39,13 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
-/**
- * struct data_s - lines and count
- * @lines: an array of strings (lines of text)
- * @count:  number of lines present in the lines array
- *
- * Description: stores the content of a file
- */
-typedef struct data_s
-{
-	char **lines;
-	int count;
-} data_t;
-
-/** functions in data.c file */
-void free_data(data_t content);
-data_t read_file(const char *filename);
+/** functions in process_file.c file */
+void free_stack(stack_t *stack);
+void process_file(const char *filename);
 
 /** function in execute.c file */
-void find_instruction(char *opcode, stack_t **stack,
-		      unsigned int line_number, char *argument);
-void execute_instructions(data_t content);
+void execute_instructions(char *opcode, unsigned int line_number,
+			  stack_t **stack);
 
 /** function in push_pall.c */
 void push(stack_t **stack, unsigned int line_number);

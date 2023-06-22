@@ -1,65 +1,36 @@
 #include "monty.h"
 
 /**
- * find_instruction - finds the corresponding instruction function
- * @opcode: opcode string
- * @stack: pointer to the stack
- * @line_number: current line number
- * @argument: instruction argument
+ * execute_instructions - executes a sequence of instructions on a file
+ * @opcode: opcode
+ * @line_number: line_number
+ * @stack: stack
  */
-void find_instruction(char *opcode, stack_t **stack,
-		      unsigned int line_number, char *argument)
+void execute_instructions(char *opcode, unsigned int line_number,
+			  stack_t **stack)
 {
-	int j = 0;
+	int valid_opcode = 0;
+	int i;
+
 	instruction_t instructions[] = {
 		{"push", push},
 		{"pall", pall},
-		{NULL, NULL}
-	};
+		/* Add more opcodes here */
+		{NULL, NULL}};
 
-	(void) argument;
-	while (instructions[j].opcode != NULL)
+	for (i = 0; instructions[i].opcode != NULL; i++)
 	{
-		if (strcmp(opcode, instructions[j].opcode) == 0)
+		if (strcmp(opcode, instructions[i].opcode) == 0)
 		{
-			instructions[j].f(stack, line_number);
-			return;
+			valid_opcode = 1;
+			instructions[i].f(stack, line_number);
+			break;
 		}
-		j++;
 	}
 
-	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-	exit(EXIT_FAILURE);
-}
-
-/**
- * execute_instructions - executes a sequence of instructions on a file
- * @content: component of data_t structure
- */
-void execute_instructions(data_t content)
-{
-	stack_t *stack = NULL;
-	stack_t *temp;
-	int i;
-
-	char *line, *opcode, *argument;
-
-	for (i = 0; i < content.count; i++)
+	if (!valid_opcode)
 	{
-		line = content.lines[i];
-		opcode = strtok(line, " \t\n");
-		if (opcode == NULL || opcode[0] == '#')
-			continue;
-
-		argument = strtok(NULL, "\t\n");
-
-		find_instruction(opcode, &stack, i + 1, argument);
-	}
-
-	while (stack != NULL)
-	{
-		temp = stack->prev;
-		free(stack);
-		stack = temp;
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+		exit(EXIT_FAILURE);
 	}
 }
