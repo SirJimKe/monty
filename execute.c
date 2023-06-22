@@ -21,7 +21,7 @@ void execute_instructions(char *opcode, unsigned int line_number,
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
-		{"div", div},
+		{"div", divi},
 		{"mul", mul},
 		{"mod", mod},
 		{NULL, NULL}};
