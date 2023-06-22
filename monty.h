@@ -19,24 +19,10 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
-
-/**
- * struct topnode_s - represents stack_t
- * @top: top node of the stack
- * @count: number of nodes in the stack
- *
- * Description: represents the stack itself, keeping track of the
- * top node and the count of elements in the stack.
- */
-typedef struct topnode_s
-{
-	stack_t *top;
-	int count;
-} topnode_t;
 
 /**
  * struct instruction_s - opcode and its function
@@ -48,8 +34,8 @@ typedef struct topnode_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 
@@ -71,13 +57,12 @@ void free_data(data_t content);
 data_t read_file(const char *filename);
 
 /** function in execute.c file */
-void find_instruction(char *opcode, topnode_t **stack,
+void find_instruction(char *opcode, stack_t **stack,
 		      unsigned int line_number, char *argument);
 void execute_instructions(data_t content);
 
 /** function in push_pall.c */
-void push(topnode_t **stack, unsigned int line_number, char *argument);
-void pall(topnode_t **stack);
-
+void push(stack_t **stack, unsigned int line_number, char *argument);
+void pall(stack_t **stack, unsigned int line_number, char *argument);
 
 #endif

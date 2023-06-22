@@ -7,7 +7,7 @@
  * @line_number: current line number
  * @argument: instruction argument
  */
-void find_instruction(char *opcode, topnode_t **stack,
+void find_instruction(char *opcode, stack_t **stack,
 		      unsigned int line_number, char *argument)
 {
 	int j = 0;
@@ -22,7 +22,7 @@ void find_instruction(char *opcode, topnode_t **stack,
 	{
 		if (strcmp(opcode, instructions[j].opcode) == 0)
 		{
-			instructions[j].f(&((*stack)->top), line_number);
+			instructions[j].f(stack, line_number);
 			return;
 		}
 		j++;
@@ -38,7 +38,7 @@ void find_instruction(char *opcode, topnode_t **stack,
  */
 void execute_instructions(data_t content)
 {
-	topnode_t *stack = NULL;
+	stack_t *stack = NULL;
 	stack_t *temp;
 	int i;
 
@@ -58,8 +58,8 @@ void execute_instructions(data_t content)
 
 	while (stack != NULL)
 	{
-		temp = stack->top->prev;
-		free(stack->top);
-		stack->top = temp;
+		temp = stack->prev;
+		free(stack);
+		stack = temp;
 	}
 }

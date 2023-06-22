@@ -6,7 +6,7 @@
  * @line_number: unsigned integer
  * @argument: a character pointer
  */
-void push(topnode_t **stack, unsigned int line_number, char *argument)
+void push(stack_t **stack, unsigned int line_number, char *argument)
 {
 	int value = atoi(argument);
 	stack_t *new_node = malloc(sizeof(stack_t));
@@ -30,24 +30,28 @@ void push(topnode_t **stack, unsigned int line_number, char *argument)
 	}
 
 	new_node->n = value;
-	new_node->prev = (*stack)->top;
-	new_node->next = NULL;
+	new_node->prev = NULL;
+	new_node->next = *stack;
 
-	if ((*stack)->top != NULL)
-		(*stack)->top->next = new_node;
+	if (*stack != NULL)
+		(*stack)->prev = new_node;
 
-	(*stack)->top = new_node;
-	(*stack)->count++;
+	*stack = new_node;
 }
 
 
 /**
  * pall - prints the values of all nodes in a stack
  * @stack: a double pounter to a stack_t structure
+ * @line_number: unsigned integer
+ * @argument: a character pointer
  */
-void pall(topnode_t **stack)
+void pall(stack_t **stack, unsigned int line_number, char *argument)
 {
-	stack_t *current = (*stack)->top;
+	stack_t *current = *stack;
+
+	(void)line_number;
+	(void)argument;
 
 	while (current != NULL)
 	{
