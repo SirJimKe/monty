@@ -24,7 +24,12 @@ void execute_instructions(char *opcode, unsigned int line_number,
 		{"div", divi},
 		{"mul", mul},
 		{"mod", mod},
-		{NULL, NULL}};
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
+		{NULL, NULL}
+	};
 
 	for (i = 0; instructions[i].opcode != NULL; i++)
 	{
