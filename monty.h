@@ -66,5 +66,11 @@ void execute_instructions(data_t content);
 void push(stack_t **stack, unsigned int line_number, char *argument);
 void pall(stack_t **stack, unsigned int line_number, char *argument);
 void pint(stack_t **doubly, unsigned int pline);
+void sub(stack_t **head, unsigned int pline);
+void nop(stack_t **doubly, unsigned int pline);
+void mul(stack_t **head, unsigned int Pline);
+void div(stack_t **doubly, unsigned int pline);
+void add(stack_t **doubly, unsigned int pline);
+
 
 #endif

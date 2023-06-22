@@ -7,7 +7,7 @@
  * from the top and top value removed.
  */
 
-void  mul(stack_t **head, unsigned int Pline)
+void  mul(stack_t **head, unsigned int pline)
 {
 	int m = 0;
 	stack_t *current;
