@@ -37,7 +37,7 @@ void process_file(const char *filename)
 }
 
 /**
- * free_stack - frees memory allocated for data_t structure
+ * free_stack - frees memory allocated for a structure
  * @stack: content
  */
 void free_stack(stack_t *stack)

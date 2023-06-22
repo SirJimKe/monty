@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * main - interprets Monthy ByteCode files
+ * main - interprets monty ByteCode files
  * @argc: argument counter
  * @argv: argment vector
  * Return: 0 or 1

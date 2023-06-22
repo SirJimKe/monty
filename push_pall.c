@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * push - pushes an element onto the stack
+ * push - pushes an element ontop of stack
  * @stack: double pointer to the stack
  * @line_number: line number in the file
  */
