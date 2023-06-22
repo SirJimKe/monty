@@ -1,3 +1,4 @@
+
 #include "monty.h"
 
 /**
@@ -20,6 +21,7 @@ void execute_instructions(char *opcode, unsigned int line_number,
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
 		{NULL, NULL}};
 
 	for (i = 0; instructions[i].opcode != NULL; i++)

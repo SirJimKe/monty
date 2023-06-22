@@ -65,3 +65,64 @@ void pall(stack_t **stack, unsigned int line_number)
 		current = current->next;
 	}
 }
+
+/**
+ * pint - prints the value at the top of the stack
+ * @stack: stack
+ * @line_number: number of the line
+ */
+void pint(stack_t **stack, unsigned int line_number)
+{
+    if (*stack == NULL)
+    {
+        fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
+        exit(EXIT_FAILURE);
+    }
+
+    printf("%d\n", (*stack)->n);
+}
+
+/**
+ * pop - removes the top element of the stack and updates the stack pointer
+ * @stack: stack
+ * @line_number: number of the line
+ */
+void pop(stack_t **stack, unsigned int line_number)
+{
+	stack_t *top;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	top = *stack;
+	*stack = (*stack)->next;
+
+	if (*stack)
+		(*stack)->prev = NULL;
+
+	free(top);
+}
+
+/**
+ * swap -  it swaps the values of the top two elements of the stack
+ * @stack: stack
+ * @line_number: line number
+ */
+void swap(stack_t **stack, unsigned int line_number)
+{
+	int temp;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n",
+			line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = (*stack)->n;
+	(*stack)->n = (*stack)->next->n;
+	(*stack)->next->n = temp;
+}
